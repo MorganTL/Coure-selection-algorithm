@@ -12,7 +12,7 @@ Note:
 1. Please DO NOT include space in the course name i.e. DO NOT type "CCST 9017"
 2. If you want to include sub-class, please use the same name for the course_name!!!
 3. starting_time and ending_time must be typed in 24hr form so 08:30 -> type "0830" or 14:20 -> type "1420"
-4. weekday must be an integers {0 = Mmonday | 1 = Tuesday | 2 = Wednesday | 3 = Thursday | 4 = Friday | 5 = Saturday} 
+4. weekday must be an integers {0 = Monday | 1 = Tuesday | 2 = Wednesday | 3 = Thursday | 4 = Friday | 5 = Saturday} 
 5. semesters must be an integers: 1 or 2
 
 For example:
