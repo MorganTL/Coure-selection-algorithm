@@ -1,7 +1,8 @@
 -----------
 How to use:
 
-Step 1, input your course options
+Step 1, Download "input.txt" and "course selection redux.py"
+Step 2, input your course options
 --------------------------------
 Type in your course sub class in the "input.txt" file under the following method:
 
@@ -21,8 +22,8 @@ CCST9017, 1630, 1820, 2, 1
 
 ---------------------------------
 
-Step 2, run the script.
-Step 3, the sorted timetable should be printed out.
+Step 3, run the script.
+Step 4, the sorted timetable should be printed out.
 
 
 --------------
