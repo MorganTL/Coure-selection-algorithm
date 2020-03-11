@@ -4,7 +4,7 @@ How to use:
 Step 1, Download "input.txt" and "course selection redux.exe"
 Step 2, input your course options
 --------------------------------
-Type in your sub class in the "input.txt" file under the following format:
+Type in your class in the "input.txt" file under the following format:
 
 
 §1: If a class has ONE time slot:
