@@ -19,12 +19,21 @@ def inputfile (filename):
             try:
                 temp = line.replace(',', '')
                 temp = temp.split()
-                time = course(int(temp[1]), int(temp[2]), int(temp[3]), int(temp[4]))
-                name = temp[0]
-                if name not in classdict:
-                    classdict[name] = [time]
+                if len(temp) == 5:
+                    time = course(temp[0],int(temp[1]), int(temp[2]), int(temp[3]), int(temp[4]))
+                    name = temp[0]
+                    if name not in classdict:
+                        classdict[name] = [time]
+                    else:
+                        classdict[name] += [time]
                 else:
-                    classdict[name] += [time]
+                    time1 = course(temp[0],int(temp[1]), int(temp[2]), int(temp[3]), int(temp[7]))
+                    time2 = course(temp[0],int(temp[4]), int(temp[5]), int(temp[6]), int(temp[7]))
+                    name = temp[0]
+                    if name not in classdict:
+                        classdict[name] = [[time1,time2]]
+                    else:
+                        classdict[name] += [[time1,time2]]
             except:
                 pass
 
@@ -32,7 +41,7 @@ def inputfile (filename):
 
 
 class course(object):
-    def __init__ (self, start, end, weekday, sem):
+    def __init__ (self, name, start, end, weekday, sem):
         """
         
         start or end:  in the form of 1430
@@ -44,6 +53,7 @@ class course(object):
         self.end = end
         self.weekday = weekday
         self.sem = sem
+        self.name = name
         
         #realstart or end is in minute form 
         #it is used to aid further caculation
@@ -56,6 +66,8 @@ class course(object):
     def get_end(self):
         return self.end
     
+    def get_name(self):
+        return self.name
     
     def get_realstart(self):
         return self.realstart
@@ -101,8 +113,10 @@ class course(object):
     def __str__(self):
         weekdaydict = {0:'Mon',1:'Tue',2:'Wed',3:'Thur',4:'Fri',5:'Sat',6:'Sun'}
         weekday = weekdaydict[self.get_weekday()]
-        return str(self.get_start()) + " -> " + str(self.get_end()) + " (" + weekday + ") in sem " + str(self.get_sem())
+        return str(self.get_name()) +": "+ str(self.get_start()) + " -> " + str(self.get_end()) + " (" + weekday + ") in sem " + str(self.get_sem())
     
+    def __len__(self):
+        return 1
     
 
 def sort_timelist(OG_list, courseX):
@@ -199,18 +213,23 @@ def printtimetable(timetable):
     This function print out the timetable in a readable formate
     
     """
-    print("Sem 1 time table")
+    print("Sem 1 time table:")
     sem1 = timetable.get_sem1()
     sem2 = timetable.get_sem2()
     for i in range(6):
-        printlist(sem1[i])
+        if sem1[i]:
+            print('')
+            printlist(sem1[i])
+            
     print("There are in total", sem1[6], "minute(s) between lessons")
     
     print('-----------------')
-    print("Sem 2 time table")
+    print("Sem 2 time table:")
     for i in range(6):
-        printlist(sem2[i])
-    
+        if sem2[i]:
+            print('')
+            printlist(sem2[i])            
+            
     print("There are in total", sem2[6], "minute(s) between lessons")
         
         
@@ -232,7 +251,11 @@ def DFS(graph, classlist, shortest, path = timetable()):
         temp = copy.deepcopy(path)
         
         try:
-            temp.addcourse(time)
+            if len(time) == 1:
+                temp.addcourse(time)
+            else:
+                for c in time:
+                    temp.addcourse(c)
             newpath = DFS(graph, classlist[1:], shortest, temp)
             if newpath != None and (shortest == None or len(shortest) > len(newpath)):
                 shortest = newpath                    
@@ -246,27 +269,34 @@ def DFS(graph, classlist, shortest, path = timetable()):
 def find_timetable(graph, classlist):   
     return DFS(graph, classlist, None)
 
-def couretime(timetable, classlist):
+def couretime(timetable):
     """
     This function can print out the course inputed
     with respect to the time
     
     timetable: custom object
-    classlist: ordered list with respect to the order added to the timetable
     
     return: a nice string
     
     """
     history = timetable.get_history()
-    for c in range(len(classlist)):        
-        print(classlist[c],end="")
-        print(": ",end="")
-        print(history[c])
+    for c in history:        
+        print(c)
+        
      
     
     
 def basicsorting(filename):
+    """
+    This basically called all the functioned used
+    
+    filename: input.txt
+    
+    return: a nice print out of the sorted timetable
+    
+    """
     graph = inputfile(filename)
+    print(graph)
     classlist = list(graph.keys())
     timetable = find_timetable(graph, classlist)
     print('-----------------')
@@ -274,28 +304,38 @@ def basicsorting(filename):
     printtimetable(timetable)
     print('-----------------')
     print('The following is selected course:')
-    couretime(timetable, classlist)
+    couretime(timetable)
 
 
-        
+#-----------------------
+#Test case      
 
-        
-a = course(1100,1230,1,1)
+a = course("E1",1100,1230,1,1)
 
-b = course(1330,1420,1,1)
-c = course(1430,1800,1,1)
+b = course("CC",1330,1420,1,1)
+c = course("CC",1430,1800,2,1)
 
-d = course(1700,1800,1,1)
-e = course(1800,1900,1,1)
+d = course("E2",1700,1800,1,1)
+e = course("E2",1800,1900,1,1)
 
-f = course(2000,2030,1,1)
-g = course(1430,1700,1,1)
+f = course("E3",2000,2030,1,1)
+g = course("E3",1430,1700,1,1)
 
-graph = {"CC":[c,b], "E1":[a],"E2":[d,e],"E3":[f,g],"E4":[a]}
+graph = {"CC":[[c,b]], "E1":[a],"E2":[d,e],"E3":[f,g],"E4":[a]}
 classlist = ['E3',"CC",'E1','E2']
 
+test = find_timetable(graph, classlist)
+print('-----------------')
+print('Loading...')
+printtimetable(test)
+print('-----------------')
+print('The following is selected course:')
+couretime(test)
 
+#----------------------
 basicsorting('input.txt')
+print('You can now exit this window')
+# input()
         
 
         
