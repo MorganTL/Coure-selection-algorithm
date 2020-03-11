@@ -296,7 +296,6 @@ def basicsorting(filename):
     
     """
     graph = inputfile(filename)
-    print(graph)
     classlist = list(graph.keys())
     timetable = find_timetable(graph, classlist)
     print('-----------------')
@@ -310,32 +309,32 @@ def basicsorting(filename):
 #-----------------------
 #Test case      
 
-a = course("E1",1100,1230,1,1)
+# a = course("E1",1100,1230,1,1)
 
-b = course("CC",1330,1420,1,1)
-c = course("CC",1430,1800,2,1)
+# b = course("CC",1330,1420,1,1)
+# c = course("CC",1430,1800,2,1)
 
-d = course("E2",1700,1800,1,1)
-e = course("E2",1800,1900,1,1)
+# d = course("E2",1700,1800,1,1)
+# e = course("E2",1800,1900,1,1)
 
-f = course("E3",2000,2030,1,1)
-g = course("E3",1430,1700,1,1)
+# f = course("E3",2000,2030,1,1)
+# g = course("E3",1430,1700,1,1)
 
-graph = {"CC":[[c,b]], "E1":[a],"E2":[d,e],"E3":[f,g],"E4":[a]}
-classlist = ['E3',"CC",'E1','E2']
+# graph = {"CC":[[c,b]], "E1":[a],"E2":[d,e],"E3":[f,g],"E4":[a]}
+# classlist = ['E3',"CC",'E1','E2']
 
-test = find_timetable(graph, classlist)
-print('-----------------')
-print('Loading...')
-printtimetable(test)
-print('-----------------')
-print('The following is selected course:')
-couretime(test)
+# test = find_timetable(graph, classlist)
+# print('-----------------')
+# print('Loading...')
+# printtimetable(test)
+# print('-----------------')
+# print('The following is selected course:')
+# couretime(test)
 
 #----------------------
 basicsorting('input.txt')
 print('You can now exit this window')
-# input()
+input()
         
 
         
