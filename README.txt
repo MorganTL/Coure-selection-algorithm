@@ -1,7 +1,7 @@
 -----------
 How to use:
 
-Step 1, Download "input.txt" and "course selection redux.py"
+Step 1, Download "input.txt" and "course selection redux.exe"
 Step 2, input your course options
 --------------------------------
 Type in your course sub class in the "input.txt" file under the following method:
