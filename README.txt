@@ -42,6 +42,8 @@ Step 3, the sorted timetable should be printed out.
 
 Devlog:
 
+0.1.2 Add the day-off priority algorithm and minor Bug fix
+
 0.1.1 Now accept a sub class with two time slot
 
 0.1.0 Publish the basic script
