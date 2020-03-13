@@ -1,10 +1,10 @@
 -----------
 How to use:
 
-Step 1, Download "input.txt" and "course selection redux.exe"
-Step 2, input your course options
+Step 1, Download "input.txt" and course_selection_redux (Terminal edition).exe or course_selection_redux (Dark UI edition).exe
+Step 2, input your course options in the "input.txt" file or in the exe (if you are using Dark UI editiion)
 --------------------------------
-Type in your class in the "input.txt" file under the following format:
+Type in your class under the following format:
 
 
 §1: If a class has ONE time slot:
@@ -35,12 +35,14 @@ CCST9017, 1630, 1820, 2, 1130, 1420, 3, 1
 
 ---------------------------------
 
-Step 2, run the script.
-Step 3, the sorted timetable should be printed out.
+Step 3, Save the txt and excute the script.
+Step 4, the sorted timetable should be printed out.
 
 --------------
 
 Devlog:
+
+0.2.0 Added Dark UI edition and Bug fix.
 
 0.1.2 Add the day-off priority algorithm and minor Bug fix
 
