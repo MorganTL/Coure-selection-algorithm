@@ -1,7 +1,7 @@
 -----------
 How to use:
 
-Step 1, Download "input.txt" and course_selection_redux (Terminal edition).exe or course_selection_redux (Dark UI edition).exe
+Step 1, Download "input.txt" + course_selection_redux (Terminal edition).exe or course_selection_redux (Dark UI edition).exe
 Step 2, input your course options in the "input.txt" file or in the exe (if you are using Dark UI editiion)
 --------------------------------
 Type in your class under the following format:
