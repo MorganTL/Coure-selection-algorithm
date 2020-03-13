@@ -40,7 +40,7 @@ text_input = tk.Text(master = frame_input, font = ("calibri", 11), bg = '#9370DB
                      highlightcolor='#1F1B24' ,highlightbackground='#121212', highlightthickness=10, bd =0)
 
 
-label_ouput = tk.Label(master = frame_output, text = 'it is not working', justify='left',
+label_ouput = tk.Label(master = frame_output, text = 'Waiting input', justify='left',
                        font = ("calibri", 11), bg = '#121212', fg = "#BB86FC" )
 
 #-----------------

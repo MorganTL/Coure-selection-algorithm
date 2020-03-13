@@ -348,7 +348,7 @@ def basicsorting(filename):
         text += '\n-----------------\n'
         return text
     
-    except ValueError:
+    except AttributeError:
         error_text = "The classes is not compatible\nPlease check the input again."
         return error_text
     
@@ -391,8 +391,8 @@ def dayoffsorting(filename):
             text += '\n>> Are the off day(s)\n-----------------'
         return text
     
-    except ValueError:
-        error_text = "The classes is not compatible\nPlease check the input again."
+    except AttributeError:
+        error_text = "The classes is not compatible\nPlease check the input again.\n"
         return error_text
                 
     except Exception:
